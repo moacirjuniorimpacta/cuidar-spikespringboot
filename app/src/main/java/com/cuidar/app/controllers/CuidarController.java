@@ -3,23 +3,22 @@ package com.cuidar.app.controllers;
 import com.cuidar.app.repository.Cuidar;
 import com.cuidar.app.repository.CuidarRepository;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class CuidarController {
 
-    CuidarRepository bookRepository;
+    CuidarRepository cuidarRepo;
 
-    public CuidarController(CuidarRepository bookRepository) {
+    public CuidarController(CuidarRepository cuidarRepo) {
 
-        this.bookRepository = bookRepository;
+        this.cuidarRepo = cuidarRepo;
     }
 
     @GetMapping("/cuidar/")
-    public Iterable<Cuidar> getBooks() {
-        return bookRepository.findAll();
+    public Iterable<Cuidar> get() {
+        return cuidarRepo.findAll();
     }
 
     
