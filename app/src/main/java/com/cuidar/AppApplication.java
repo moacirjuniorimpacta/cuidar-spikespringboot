@@ -1,9 +1,10 @@
-package com.cuidar.app;
+package com.cuidar;
 
+import java.util.Calendar;
 import java.util.stream.Stream;
 
-import com.cuidar.app.repository.Cuidar;
-import com.cuidar.app.repository.CuidarRepository;
+import com.cuidar.model.FamilyMember;
+import com.cuidar.repository.FamilyMemberRepo;
 
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -18,10 +19,10 @@ public class AppApplication {
 	}
 
 	@Bean
-    ApplicationRunner init(CuidarRepository repository) {
+    ApplicationRunner init(FamilyMemberRepo repository) {
         // Save our starter set of books
         return args -> {
-            Stream.of(new Cuidar(null, "Cuidar App"), new Cuidar(null, "Cuidar App 2")).forEach(cuidar -> {
+            Stream.of(new FamilyMember(null, "José", "123", Calendar.getInstance().getTime())).forEach(cuidar -> {
                 repository.save(cuidar);
             });
             //retrieve them all, and print so that we see everything is wired up correctly
